@@ -1,0 +1,80 @@
+*{margin: 0; padding: 0;}
+html{font-size: 100px;}
+body{font-size: .16rem; background: #F4F4F4;}
+ul{list-style: none; margin: 0;}
+a{text-decoration: none; color: black;}
+img{display: block; width: 100%;}
+.clearfix:after{content: ''; display: table; clear: both;}
+nav{height: 1rem; line-height: 1rem; border-bottom: 2px solid blue; background: #fff; position: relative;}
+nav h3{margin: 0; text-align: center; height: 1rem; line-height: 1rem; font-size: .35rem;}
+nav span{width: .4rem; height: .4rem; display: inline-block; position: absolute; right: .4rem; top: .3rem;}
+nav ul{display: flex; justify-content: space-around;}
+nav ul li{float: left; padding: 0 .2rem; font-size: .35rem;}
+.color{color: #005DF6;}
+.carousel-indicators{margin-left: 0; bottom: 0;}
+.banner{background: #fff; margin-top: .1rem;}
+.banner h3{height: .75rem; line-height: .75rem; padding: 0 .2rem; margin: 0; font-size: .35rem;}
+.banner h3 span{width: .5rem; height: .5rem; display: inline-block; margin: .1rem; float: left;}
+.banner h3 a{width: .15rem; height: .26rem; display: inline-block; float: right; margin: .2rem 0;}
+.banner .subscibe{width: 100%; display: flex; justify-content: space-around;}
+.banner .subscibe .item{width: 2.3rem; text-align: center;}
+.banner .subscibe .item h4{height: .4rem; line-height: .4rem; overflow: hidden; font-size: .2rem; margin: 0;}
+.banner .subscibe .item p{color: #999; margin-bottom: .1rem;}
+.head{height: .8rem; border-bottom: 1px solid #ccc; background: #fff; line-height: .7rem;}
+.head>span{float: right; font-size: .25rem;}
+.head .btn-group .btn{border: none;}
+.ctitem{height: 2.5rem;padding: .1rem .3rem; display: flex; justify-content: space-between; background: #fff; margin-bottom: .1rem; position: relative;}
+.ctitem .round{width: .64rem; height: .64rem; position: absolute; right: 0; top: 0;}
+.ctitem .ctpic{width: 1.8rem; height: 2.3rem; float: left;}
+.ctitem .ct_icon{width: 4.8rem;}
+.ctitem .ct_icon h4{height: .6rem; line-height: .6rem; font-size: .35rem; margin: 0;}
+.ctitem .ct_icon p{height: .5rem; line-height: .5rem; color: #999; margin: 0; font-size: .2rem;}
+.ctitem .ct_icon p span{width: .3rem; height: .3rem; display: inline-block; margin: .1rem; float: left; font-family: consolas;}
+.ctitem .cticon{width: 3.2rem;}
+.ctitem .cticon h4{height: .6rem; line-height: .6rem; font-size: .35rem; margin: 0;}
+.ctitem .cticon p{height: .5rem; line-height: .5rem; color: #999; margin: 0; font-size: .2rem;}
+.ctitem .cticon p span{width: .3rem; height: .3rem; display: inline-block; margin: .1rem; float: left; font-family: consolas;}
+.ctitem .ctpage{width: 1.2rem; text-align: center;}
+.ctitem .ctpage img{width: .8rem; margin: .2rem;}
+.ctclassify{padding: .2rem .15rem; display: flex; justify-content: space-around; background: #fff; flex-wrap: wrap;}
+.ctclassify .ctclass{width: 2.1rem; text-align: center;}
+.ctclassify .ctclass p{height: .7rem; line-height: .7rem; font-size: .3rem; margin: 0;}
+.spe_item{padding: .2rem .1rem; margin: .2rem .3rem; background: #fff;}
+.spe_item div{height: .7rem; line-height: .7rem; margin: 0;}
+.spe_item div h4{float: left; margin: 0; height: .7rem; line-height: .7rem;}
+.spe_item div span{font-size: .25rem; float: right;}
+.swiper-container{height: 1rem; line-height: 1rem; border-bottom: 2px solid blue; background: #fff;}
+.swiper-container ul li{padding: 0 .32rem; font-size: .3rem; margin: 0;}
+.swiper-slide-active{color: blue;}
+.date{height: .56rem; line-height: .56rem; font-size: .2rem; padding: 0 .2rem; margin: 0;}
+.news_item{padding: .16rem .1rem; display: flex; justify-content: space-between; background: #fff; border-bottom: 1px solid #ccc;}
+.news_item .newsimg{width: 2.5rem; float: left;}
+.news_item .newsicon{width: 4.4rem;}
+.news_item .newsicon h4{height: .9rem; line-height: .45rem; overflow: hidden; font-size: .3rem;}
+.news_item .newsicon p{height: .6rem; line-height: .6rem; float: left; margin: 0; padding-right: .4rem;}
+.news_item .newsicon p span{width: .4rem; height: .4rem; display: inline-block;float: left; margin: .1rem;}
+.ficitem{height: 2rem; background: #fff; padding: .25rem 0; display: flex; justify-content: space-around;}
+.ficitem .ficicon{width: .9rem; text-align: center;}
+.ficitem .ficicon p{height: .45rem; line-height: .45rem; margin: 0; padding-top: .1rem;
+font-size: .2rem;}
+.btntype{padding: .15rem .2rem;}
+.btntype button{border: none; border: 1px solid blue; background: #fff; width: 50%; height: .7rem; line-height: .7rem; font-size: .3rem; color: blue;}
+.btntype button:first-child{border-radius: 5px 0 0 5px;}
+.btntype button:last-child{border-radius: 0 5px 5px 0;}
+.btntype .choose{background: blue; color: #fff;}
+#listgroup{background: #fff; border-top: 1px solid #ccc;}
+#listgroup.hidden{}
+#listgroup li{height: .9rem; line-height: .9rem; font-size: .25rem; border-bottom: 1px solid #ccc;}
+#listgroup li span{width: .5rem; height: .5rem; margin: .2rem; display: inline-block; float: left;}
+.navbot{width: 100%; position: fixed; height: 1rem; display: flex; justify-content: space-around; left: 0; bottom: 0; border-top: 1px solid #ccc; background: rgba(255,255,255,.9); font-size: 0;}
+.navbot .item{width: 1rem; padding-top:.1rem; text-align: center;}
+.navbot .item .span2{display: none;}
+.navbot .item span{width: .5rem; height: .5rem; display: inline-block;}
+.navbot .item span img:first-child{display: block;}
+.navbot .item span img:last-child{display: none;}
+.navbot .item p{height: .4rem; line-height: .4rem; margin: 0; font-size: .14rem;}
+.navbot .active{color: #005DF6;}
+.navbot .active span img:first-child{display: none;}
+.navbot .active span img:last-child{display: block;}
+	
+

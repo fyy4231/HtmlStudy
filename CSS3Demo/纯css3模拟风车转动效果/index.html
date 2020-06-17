@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css3模拟风车转动效果</title>
+<style type="text/css">
+	*{margin: 0; padding: 0; list-style: none;}
+	.box{position: relative; margin-top: 200px;}
+	ul li{position: absolute; left: 45%; top: 100%; margin-left: -200px; margin-top: -100px;}
+	ul li img{transform-style: preserve-3d;} 	/*第一开启3d视角*/
+	/*-webkit-transform: ;		兼容 Safari 和 Chrome
+	-moz-transform: ;			兼容 Firefox */
+	ul li:nth-of-type(1){animation: z 5s linear 0s infinite;}  	/*第二，给元素设置动画效果*/
+	ul li:nth-of-type(2){animation: y 20s linear 0s infinite;} 	
+	/*animation（动画）：name(动画名称) duration（动画时间） timing-function（动画方式） delay（动画延迟） 
+	 * interation-count(播放次数)；*/
+	ul li:nth-of-type(3){animation: z 10s linear 0s infinite;}
+	/*自定义动画*/
+	@keyframes z {
+		0% {transform: rotateZ(0deg)}
+		100% {transform: rotateZ(360deg)}
+	}
+	@keyframes y {
+		0 { transform: rotateZ(0deg)}
+		100% {transform: rotateZ(-360deg)}
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	<ul>
+		<li><img src="images/main5-pic1.png"/></li>
+		<li><img src="images/main5-pic2.png"/></li>
+		<li><img src="images/main5-pic3.png"/></li>
+	</ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	/*
+	3d转换：transform属性
+	translate: 3D位移变化； translateX(x) translateY(y) translateZ(z) translate3d(x,y,z)
+	rotate: 3D旋转变化(单位：角度deg)； rotateX(angle) rotateY(angle) rotateZ(angle) rotate3d(x,y,z,angle)
+	scale: 3D缩放变化(单位：倍数)； scaleX(x) scaleY(y) scaleZ(z) scale3d(x,y,z)
+	perspective(n):3D 转换元素的透视视图
+	------------------------------------------------------------------------
+	关键帧动画：animation属性
+	animation-name: 执行动画的名称
+	animation-duration: 动画完成一个周期的时间，默认是0；
+	animation-timing-function: 动画的速度曲线，默认是“ease”; linear:线性匀速； ease:低速-高速-低速；
+		ease-in:低速开始； ease-out:低速结束； ease-in-out:低速开始低速结束；
+	animation-delay: 动画延迟开始时间，默认是0；
+	animation-iteration-count: 动画被播放次数，默认是1； infinite：无限次；
+	animation-direction: 动画是否在下一周期逆向播放，默认“normal”;
+	animation-play-state: 动画是否正在运行或暂停，默认“running”;
+	animation-fill-mode: 动画之外的状态，就是动画不播放时应用到元素中的样式；
+	----------------------------------------------------------------------
+	定义动画：@keyframes 动画名称{
+		动画状态
+	}
+	 */
+</script>

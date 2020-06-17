@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {text-align: center;}
+		canvas {box-shadow: 0 0 10px #eee;}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width='600px;' height="600px;"></canvas>
+</body>
+</html>
+<script>
+	var canvas = document.getElementById('cvs');
+	var cvs = canvas.getContext('2d');
+
+	// 初始值
+	var r = 200;	//钟表半径，设定圆点（300,300）
+
+	// init();
+
+	function init() {
+		// body...
+		var num = 0;	//记录当前绘制的是第几个刻度
+		var len;	//刻度的长短
+
+		function draw() {
+			// body...
+			// 每个刻度转过的角度
+			var deg = num*Math.PI*2/60;
+
+			// 判断是红色刻度还是黑色刻度
+			if (num % 5 == 0){
+				cvs.strokeStyle = 'red';
+				cvs.lineWidth = 5;
+				len = 15;
+			}else{
+				cvs.strokeStyle = 'black';
+				cvs.lineWidth = 3;
+				len = 8;
+			}
+
+			// 求出绘制的起点和终点
+			// 
+			var x1 = 300 + (r-len)*Math.cos(deg);
+			var y1 = 300 + (r-len)*Math.sin(deg);
+
+			var x2 = 300 + r*Math.cos(deg);
+			var y2 = 300 + r*Math.sin(deg);
+
+			cvs.beginPath();
+			cvs.moveTo(x1, y1);
+			cvs.lineTo(x2, y2);
+			cvs.closePath();
+
+			cvs.stroke();
+
+			num++;
+		}
+
+		for (var i = 0; i < 60; i++){
+			draw();
+		}
+	}
+
+	// 绘制整个钟表
+	// 表心（300,300），刻度（init），时针，分针，秒针
+	// 获取当前的时间（小时，分钟，秒数）
+	// 
+	
+	// run();
+
+	setInterval(run, 1000);
+	
+	function run() {
+		cvs.clearRect(0, 0, canvas.width, canvas.height);
+		// body...
+		// 表心
+		cvs.beginPath();
+		cvs.arc(300, 300, 6, 0, Math.PI*2);
+		cvs.closePath();
+		cvs.fill();
+
+		// 刻度
+		init();
+
+		// 获取时间
+		var date = new Date();
+
+		var h = date.getHours();
+		var m = date.getMinutes();
+		var s = date.getSeconds();
+
+		console.log(h, m, s);
+
+		// 秒针
+		// 2pi/60 * s - pi/2
+		var s_deg = s*Math.PI*2/60 - Math.PI/2;
+		var s_x = 300 + (r-25)*Math.cos(s_deg);
+		var s_y = 300 + (r-25)*Math.sin(s_deg);
+
+		cvs.beginPath();
+		cvs.lineWidth = 1;
+		cvs.strokeStyle = 'red';
+		cvs.moveTo(300, 300);
+		cvs.lineTo(s_x, s_y);
+		cvs.closePath();
+
+		cvs.stroke();
+
+		// 分钟（m，s）
+		// 
+		var m_deg = (m+s/60)*Math.PI*2/60 - Math.PI/2;
+		var m_x = 300+(r-40)*Math.cos(m_deg);
+		var m_y = 300+(r-40)*Math.sin(m_deg);
+
+		cvs.beginPath();
+		cvs.strokeStyle = 'black';
+		cvs.lineWidth = 3;
+		cvs.moveTo(300, 300);
+		cvs.lineTo(m_x, m_y);
+		cvs.closePath();
+		cvs.stroke();
+
+		// 小时（h，m，s）
+		var h_deg = (h+m/60+s/3600)*Math.PI*2/12 - Math.PI/2;
+		var h_x = 300 + (r-70)*Math.cos(h_deg);
+		var h_y = 300 + (r-70)*Math.sin(h_deg);
+
+		cvs.beginPath();
+		cvs.lineWidth = 6;
+		cvs.moveTo(300, 300);
+		cvs.lineTo(h_x, h_y);
+		cvs.closePath();
+		cvs.stroke();
+	}
+
+</script>

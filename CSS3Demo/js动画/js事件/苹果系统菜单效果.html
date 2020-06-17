@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iMac苹果系统菜单效果</title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+#div1 {position:absolute; bottom:0; width:100%; text-align:center;}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(document).mousemove(function(ev){
+		$('img').each(function(){
+			//图片中心点的坐标
+			var l=$(this).offset().left+$(this).width()/2;
+			var t=$(this).offset().top+$(this).height()/2;
+			//勾股定理
+			var a=ev.pageX-l;
+			var b=ev.pageY-t;
+			var c=Math.sqrt(a*a+b*b);
+			//console.log(c);
+			var rate=1-c/500;//触发区域
+			if(rate<0.5){
+				rate=0.5
+			};
+			$(this).width(128*rate);
+		});
+	});
+})
+/*window.onload=function (){
+	//想让图片放大几倍？？2倍
+	var oDiv=document.getElementById('div1');
+	var aImg=document.getElementsByTagName('img')[0];
+	document.onmousemove=function (ev){
+		//图片中心点的坐标
+		var l=aImg.offsetLeft+aImg.offsetWidth/2;
+		var t=aImg.offsetTop+oDiv.offsetTop+aImg.offsetHeight/2;
+		//距离
+		var a=ev.clientX-l;
+		var b=ev.clientY-t;
+		var c=Math.sqrt(a*a+b*b);
+		//放大倍率
+		var rate=1-c/500;  //低于300/2的一半，开始产生放大效果
+		if(rate<0.5)rate=0.5;
+		aImg.style.width=128*rate+'px';
+	};
+};*/
+</script>
+</head>
+<body>
+<div id="div1">
+	<img src="images/01.png" width="64" />
+    <img src="images/02.png" width="64" />
+    <img src="images/03.png" width="64" />
+    <img src="images/01.png" width="64" />
+    <img src="images/02.png" width="64" />
+</div>
+</body>
+</html>

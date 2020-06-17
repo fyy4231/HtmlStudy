@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>鼠标响应图片滚动</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.clip{ width:482px;height:80px; margin:100px auto;}
+
+/*图片显示区域，需要设置overflow：hidden*/
+.clip .clipCont{ height:80px;border:1px solid #ccc; overflow:hidden;}
+.imgList{ position: relative;top:0; left:0}/*图片的ul容器*/
+.clip img{ width:120px; height:80px; float:left}
+</style>
+</head>
+<body>
+<div class="clip">
+	<div class="clipCont">
+    	<ul class="imgList">
+            <li><img src="01.jpg"></li>
+            <li><img src="02.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="01.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="04.jpg"></li>
+            <li><img src="03.jpg"></li>
+            <li><img src="02.jpg"></li>
+            <li><img src="01.jpg"></li>
+            <li><img src="04.jpg"></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script>
+window.onload=function(){
+	function Clip(obj,img_w){//构造函数
+		this.clipBox=obj;	//外层盒子
+		this.imgList=obj.getElementsByClassName('imgList')[0];
+		this.img_w=img_w;		//每一个图片宽度
+		this.imgList.style.width=this.imgList.children.length*this.img_w+'px';	//ul的宽度等于li的宽度乘以li的个数
+	};
+	Clip.prototype.move=function(){
+		var _this=this;
+		this.clipBox.addEventListener('mousemove',function(ev){//监听鼠标移动事件
+			var m_l=ev.clientX-_this.clipBox.offsetLeft;	//鼠标在ul上的偏移量
+			var ul_w=_this.imgList.offsetWidth;//ul的宽度
+			
+			//鼠标左右移入50px 计算鼠标在ul上的比例
+			var m_rate=(m_l-50)/(_this.clipBox.offsetWidth-100);
+			
+			var l=-(ul_w-480)*m_rate;		//ul能向左偏移（left）的最大值乘以比例  得到ul应该移动的left值
+			//限定向左和向右移动的最大值
+			if(l>=0) l=0;
+			if(l<=-(_this.imgList.offsetWidth-_this.clipBox.offsetWidth))l=-(_this.imgList.offsetWidth-_this.clipBox.offsetWidth);
+			_this.imgList.style.left=l+"px";
+		},false);
+	};
+	
+	//调用
+	var oClip=document.getElementsByClassName('clip')[0];
+	new Clip(oClip,120).move();//传递    外层容器对象  每一个图片的宽度
+}
+</script>

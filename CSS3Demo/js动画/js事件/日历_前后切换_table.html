@@ -1,0 +1,149 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+#calendar{width:270px;margin:100px auto; overflow:hidden;border:1px solid #000; padding:20px; position:relative}
+#title{ text-align:center; margin-bottom:10px}
+#calendar table{ text-align:center; width:100%; border-collapse:collapse}
+#calendar table .t_head{ background:#bbb; color:#fff;}
+th,td{ border:1px solid #ccc; padding:10px}
+#calendar  #pre{ position:absolute;top:20px;left:20px;}
+#calendar  #next{ position:absolute;top:20px;right:20px;}
+#calendar .ccc{ color:#888;}
+#calendar .red{ background:#F90; color:#fff;}
+#calendar .sun{ color:#f00;}
+
+</style>
+<script>
+window.onload=function(){
+	var calendar=document.getElementById('calendar');
+	var day_list=document.getElementById('date_list');
+	var title=document.getElementById('title');
+	
+	var iNow=0;//当月
+   
+	function dateFn(){
+		var oDate=new Date();
+		var today=oDate.getDate();//今天
+		
+		//拨时间
+		oDate.setMonth(oDate.getMonth()+iNow,1);//必须将日期设置成小于28日的数,否则遇到2月28日的情况，会跳到3月
+		
+		var year=oDate.getFullYear();
+		var month=oDate.getMonth();
+		
+		var firstDay_week=oDate.getDay();//算出本月第一天是星期几  0-6   星期天是0
+		
+		if(firstDay_week==0) firstDay_week=7;
+
+		//firstDay_week==0 && (firstDay_week=7);
+						
+		oDate.setMonth(oDate.getMonth()+1,0); //到下个月的第0天，就是本月的最后一天
+		
+		var allDays=oDate.getDate();//算出本月总天数
+		
+		var insert_td=firstDay_week-1+allDays; //需要插入的总天数
+		
+		if(insert_td==28) insert_td=28;
+		else if(insert_td>28 && insert_td<=35) insert_td=35;
+		else if(insert_td>35) insert_td=42;
+		
+		//插入空白td
+		var html='<tr class="t_head"><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th></tr>';
+		for(var k=0; k<insert_td; k++){
+			if(k%7==0){
+				html+='<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+			};
+		};
+		day_list.innerHTML=html;
+		
+		//所有插入的td
+		var aTd=day_list.getElementsByTagName('td');
+		
+		//清空全部td
+		for(var i=0; i<aTd.length; i++){
+			aTd[i].innerHTML='';
+		};	
+		
+		//需跳过“前月”空白的td数量
+		var empty=firstDay_week-1;
+		
+		//插入日期
+		for(var i=empty; i<allDays+empty; i++){
+			aTd[i].innerHTML=i-empty+1;
+		};
+		
+		
+		//标记颜色
+		for(var i=0;i<aTd.length;i++){
+			//上个月
+			if(iNow<0){
+				aTd[i].className='ccc';	
+			}
+			//本月
+			else if(iNow==0){
+				if(aTd[i].innerHTML<today){//过去的日期变灰
+					aTd[i].className='ccc';	
+				}	
+				else if(aTd[i].innerHTML==today){//当天	
+					aTd[i].className='red';	
+				}
+				else if(i%7==5||i%7==6){//星期六星期天
+					aTd[i].className='sun';	
+				}
+			}
+			//后月
+			else{
+				if(i%7==5||i%7==6){//星期六星期天
+					aTd[i].className='sun';	
+				}
+			}
+		};
+				
+		
+		//改日期标题
+		title.innerHTML=year+'年'+(month+1)+'月';
+	
+	}
+	//第一次调用
+	dateFn();
+	
+	//上月下月------------------------------------------------------
+	var oPre=document.getElementById('pre');
+	var oNext=document.getElementById('next');
+	
+	oNext.onclick=function(){
+		iNow++;
+		dateFn();
+	};
+	
+	oPre.onclick=function(){
+		iNow--;
+		dateFn();
+	};
+   
+};
+</script>
+</head>
+
+<body>
+<div id="calendar">
+       <h4 id="title">2013年10月</h4>
+       <a href="javascript:;" id="pre" class="a1">上月</a>
+       <a href="javascript:;" id="next" class="a2">下月</a>
+   
+    <table id="date_list">
+    	<!--<tr><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th></tr>
+    	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>-->
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+.hide{display: none;}
+.baby{height: 575px;background:#F2F2F2;border-bottom: 1px solid #f2f0f5;}
+.baby .nav{height: 45px;}
+.baby .nav li{height: 45px;line-height: 45px;float: left;font-size: 14px;}
+.baby .nav li a{padding: 0 8px;color: #626262;}
+.baby .nav li a:hover{color: red;}
+.baby .nav li .ac{font-size: 20px;font-weight: bold;color: #606972;}
+.baby .infor{height: 530px;background: #fff;}
+.baby .infor .left{width: 400px;float: left;}
+.baby .infor .left .pic{position: relative;width: 400px;height: 400px;}
+.baby .infor .left .pic li{width: 400px;height: 400px;}
+.baby .infor .left .pic li img{height: 100%;width: 100%;}
+.baby .infor .left .pic span{position: absolute;top:0px;left: 0px;background: red;opacity: .3;cursor: move;height: 200px;width: 200px;}
+.baby .infor .left .zoom{height:400px;width: 400px;position: absolute;top: 225px;left: 740px;overflow: hidden;z-index: 2;}
+.baby .infor .left .zoom img{position: absolute;height:800px;width: 800px;}
+.baby .infor .left .img_list{height: 60px;width:400px;position: relative;margin-top: 20px;}
+.baby .infor .left .img_list #for,#back{display: block;height: 32px;width: 22px;position: absolute;top: 10px;background: url(../images/disabled-prev.png);}
+.baby .infor .left .img_list #back{background: url(../images/disabled-next.png);right: 0;}
+.baby .infor .left .img_list ol{margin-left: 50px;}
+.baby .infor .left .img_list li{height: 50px;width: 50px;border:2px solid transparent ;float: left;margin-right: 20px;cursor: pointer;}
+.baby .infor .left .img_list .ac{border: 2px solid red;}
+.baby .infor .left .img_list li img{height: 50px;width: 50px;}
+.baby .infor .left .share{padding: 0 32px;height: 50px;line-height: 50px;font-size: 14px;}
+.baby .infor .left .share p{float: left;}
+.baby .infor .left .share .btn{float:right;}
+.baby .infor .left .share .btn a i{display: inline-block;margin-right: 5px;vertical-align: middle;}
+.baby .infor .left .share .btn .fen{background: url(../images/__sprite.png) -45px -24px;width: 15px;height: 14px;}
+.baby .infor .left .share .btn .guan{background:  url(../images/__sprite.png) -44px -40px;width: 14px;height: 13px;}
+.baby .infor .right{float: left;width: 600px;font-size: 14px;}
+.baby .infor .right .title{padding: 14px 0 11px 0;}
+.baby .infor .right .title h3{line-height: 25px;}
+.baby .infor .right .title span{height: 18px;line-height: 18px;color: red;}
+.baby .infor .right .price{height: 50px;width: 590px;background: #f7f7f7;color: #929292;}
+.baby .infor .right .price .le{float: left;line-height: 50px;height: 50px;}
+.baby .infor .right .price .le .dd{float: left;padding-left: 12px;}
+.baby .infor .right .price .le span{font-size: 22px;color: red;font-weight: bold;}
+.baby .infor .right .price .rig{float: right;width: 86px;border-left: 1px solid #e6e6e6;margin: 10px 0;text-align: center;}
+.baby .infor .right .price .rig p{line-height: 22px;height: 22px;}
+.baby .infor .right .pampers{padding:12px 0 5px 12px;border-bottom: 1px dashed #dddddd;}
+.baby .infor .right .pampers .area{height: 33px;line-height: 33px;}
+.baby .infor .right .pampers .dd{float: left;}
+.baby .infor .right .pampers .area select{border: 1px solid #c9c9c9;margin: 0 8px;}
+.baby .infor .right .pampers .area span{font-size: 16px;font-weight: bold;}
+.baby .infor .right .pampers .area em a{margin: 0 9px;}
+.baby .infor .right .pampers .service{height: 33px;line-height: 33px;}
+.baby .infor .right .pampers .service span{color: red;}
+.baby .infor .right .pampers .service a{margin: 0 3px;}
+.baby .infor .right .size{padding:13px 0 0 12px;height: 109px;}
+.baby .infor .right .size .dd{float: left;}
+.baby .infor .right .size .size1{margin-left: 70px;}
+.baby .infor .right .size .size1 li{float: left;border: 1px solid #cbcad2;height: 26px;margin:4px 8px 0 0;line-height: 26px;text-align: center;position: relative;}
+.baby .infor .right .size .size1 li a{color: #6a6a6a;padding: 0 6px;border: 1px solid transparent;line-height: 24px;display: inline-block;}
+.baby .infor .right .size .size1 li:hover{border-color:#A55359;}
+.baby .infor .right .size .size1 li:hover a{border-color:#A55359;}
+.baby .infor .right .size .size1 li span{color:transparent ;position: absolute;right: 0;bottom:-8px;font-size: 12px;font-family: consolas;z-index: 2;}
+.baby .infor .right .size .size1 .ac::after{content:"";position: absolute;height: 0;width: 0;border:6px solid transparent;border-right-color: #A75257;border-bottom-color: #A75257;bottom:0;right:0;}
+.baby .infor .right .size .size1 .ac{border-color: #A55359;}
+.baby .infor .right .size .size1 .ac a{border-color: #A55359;}
+.baby .infor .right .size .size1 .ac span{color: #fff;}
+.baby .infor .right .shop {padding:30px 0 0 12px ;height: 36px;}
+.baby .infor .right .shop form{height: 34px;width: 49px;position: relative;border: 1px solid #cbcbcb;color: #656364;float: left;}
+.baby .infor .right .shop .num{border-right: 1px solid #cbcbcb;width: 33px;height: 34px;text-align: center;;line-height: 34px;}
+.baby .infor .right .shop .jia{position: absolute;;top: 0;right: 0;width: 15px;height: 17px;border-bottom: 1px solid #cbcbcb ;display: block;line-height: 17px;text-align: center;}
+.baby .infor .right .shop .jian{position: absolute;bottom:0;right: 0 ;width: 15px;height: 16px;display: block;line-height: 16px;text-align: center;}
+.baby .infor .right .shop .join{width: 135px;height: 36px;background: url(../images/nva_bg.png)  5px -376px;background-color: #ea4148;color: #fff;cursor: pointer;float: left;margin-left: 10px;display: block;}
+.baby .infor .right .cue{color: #6d6d6d;height: 62px;line-height: 62px;padding-left: 12px;}
+.baby .infor .right .cue .dd{float: left;}
+.baby .infor .right .cue .dt li{float: left;margin: 0 8px;}
+.baby .infor .right .cue .dt a{margin: 0 8px;}
+.baby .infor .contact{float: left;width: 210px;}
+.baby .infor .contact .icon{border-top: 1px solid #efefef;border-bottom: 1px solid #efefef;height: 80px;margin-top: 20px;}
+.baby .infor .contact .icon a{padding: 0 62px;}
+.baby .infor .contact .icon1{height: 52px;line-height: 52px;padding-left: 10px;}
+.baby .infor .contact .icon1 a{font-size: 14px;color: #1e4767;display: block;width: 106px;overflow: hidden;height: 52px;float: left;}
+.baby .infor .contact .icon1 .self{height: 20px;width: 60px;float: left;background: red;line-height: 18px;margin-top: 16px;border-radius: 3px;}
+.baby .infor .contact .icon1 .self a{font-size: 14px;color: #fff;}
+.baby .infor .contact ul li a{height: 28px;width: 90px;border: 1px solid #d0d0d0;float: left;line-height:28px ;font-size: 12px;color: #666;margin:0 7px 12px 0;}
+.baby .infor .contact ul li i{height: 16px;width: 16px;background: url(../images/__sprite1.png) -17px 26px;display: inline-block ;margin:0 3px 0 4px;vertical-align: middle;}
+.baby .infor .contact ul li .two{background-position:0 26px ;}
+.baby .infor .contact ul li .three{background-position:-34px 43px ;}
+.baby .infor .contact ul li .four{background-position:-33px 26px ;}
+.baby .infor .contact em{font-size: 14px;height: 36px;line-height: 36px;}
+.baby .infor .contact ol li a{float: left;height:40px;width:80px;display: block;line-height: 40px;font-size: 14px;color: #707298;}
+.baby .infor .contact ol li i{height: 16px;width: 16px;background: url(../images/__sprite1.png) 0 0;display: inline-block;margin-right: 5px;vertical-align: middle}
+.baby .infor .contact ol li .two{background-position: 0 26px;}
+.recommend{margin-top: 10px;}
+.recommend .nav1{border-top: 2px solid #999;border-left: 1px solid #ddd;border-right: 1px solid #ddd;background: #f7f7f7;}
+.recommend .nav1 li{height: 31px;line-height: 31px;border-top: 3px solid #fff;border-left: 1px solid #fff;border-right: 1px solid #fff;float: left;font-size: 12px;}
+.recommend .nav1 li a{padding: 0 15px;color: #666666;height: 31px;display: block;}
+.recommend .nav1 .ac{border-color: #c81623;z-index: 2;margin-top: -1px;padding-top: 1px;}
+.recommend .nav1 .ac a{background: #fff;height: 32px;}
+.recommend .tuwen ul{border: 1px solid #ddd;height: 234px;}
+.recommend .tuwen ul li{padding: 0 20px;width: 160px;float: left;}
+.recommend .tuwen .pict{height: 160px;width: 160px;}
+.recommend .tuwen .txt {font-size: 14px;}
+.recommend .tuwen .txt p{line-height: 17px;}
+.recommend .tuwen .txt span{color: #c81623;text-align: center;display: block;font-weight: bold;}

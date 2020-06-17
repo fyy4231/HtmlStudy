@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>圆环进度条</title>
+
+<script>
+
+window.onload=function(){
+
+	var cvs=document.getElementById("cvs");	
+	var ctx=cvs.getContext("2d");
+	
+	var w=cvs.width;
+	var h=cvs.height;
+	
+	var x=w/2;
+	var y=h/2;
+	
+	ctx.lineWidth=16;
+	
+	var r=Math.min(w,h)/2-ctx.lineWidth/2;
+	
+	var total=5;
+	
+	var pro=0;
+	
+	function draw(){
+		
+		if(pro>total){
+		    return;	
+		}
+		
+		ctx.clearRect(0,0,cvs.width,cvs.height);
+		
+		// 绘制背景圆环
+		ctx.beginPath();
+		ctx.strokeStyle="#87ceeb";
+		ctx.arc(x,y,r,0,Math.PI*2);
+		ctx.stroke();
+		
+		// 绘制进度条
+		ctx.beginPath();
+		ctx.strokeStyle="purple";
+		ctx.lineCap="round";
+		var start=(Math.PI*3/2)*pro/total;
+		var p=0.4*pro/total;
+		var end=start+(Math.PI*2)*p;
+		//console.log(p*100);
+		ctx.arc(x,y,r,start,end);
+		ctx.stroke();
+		
+		// 绘制文字
+		var text = (p*100).toFixed(2)+'%';
+		ctx.font = '22px arial';
+		ctx.fillStyle = 'orange';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+		ctx.fillText(text, x, y);
+		
+		pro++;
+		
+	}
+	
+    setInterval(draw,100);
+	
+	
+	
+}
+
+</script>
+
+</head>
+
+<body>
+
+<canvas id="cvs" width="200" height="200"></canvas>
+
+</body>
+</html>

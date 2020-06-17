@@ -1,0 +1,12 @@
+.main{width: 1140px;height:797px;margin: 0 auto;text-align: center;}
+	.main h2{height: 50px;line-height: 50px;font-size: 30px;padding-top: 70px;}
+	.main ul{height: 65px;display: inline-block;*display: inline;*zoom:1;}
+	.main li{height: 65px;line-height: 65px;padding: 0 16px;float: left;font-size: 15px;}
+	.main li a{color: #232231;font-weight: bold;}
+	.main li a:hover{color: red;}
+.pic_list{}
+	.pic{width: 285px;height: 182px;float: left;position: relative;}
+	.pic img{width: 100%;}
+	.pic a{width: 100%;height: 100%;rgba(0,0,0,.5);font-size: 30px;line-height: 182px;position: absolute;left: 0;top: 0;display: none;color: #fff;}
+	.pic:hover a{display: block;}
+	

@@ -1,0 +1,6 @@
+.main{width: 1140px;margin: 0 auto;text-align: center;}
+	.main h2{padding-top: 58px;height: 94px;line-height: 94px;font-size: 45px;}
+	.main p{line-height:23px ;font-size: 13px;color:#999 ;padding: 0 140px;}
+	.main .in_text{width:333px;height: 12px;border: 1px solid #dcdbe0;background: #ededed;padding: 17px 17px 18px;margin: 32px 0 24px;color: #b8b8b8;border-radius: 4px;}
+	.main textarea{width: 1081px;height: 214px;border: 1px solid #dcdbe0;background: #ededed;color: #b8b8b8;border-radius: 4px;padding: 17px;}
+	.main .sub{width: 255px;height: 57px;line-height: 57px;background: #ed5844;border-radius: 4px;box-shadow: 0 0 8px rgba(0,0,0,.5) inset;margin: 45px 0 42px;color: #fff;font-size: 22px;}

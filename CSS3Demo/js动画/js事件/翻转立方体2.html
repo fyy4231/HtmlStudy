@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='jquery-1.11.3.min.js'></script>
+	<style>
+		.box{width: 320px;height: 200px;margin: 200px auto;transform-style: preserve-3d;/*transform: rotateX(45deg) rotateZ(45deg);*/}
+		.mian{width: 320px;height: 200px;}
+		.kuai{width: 80px;height: 200px;float: left;transition:transform 3s;position: absolute;left: 0;top: 0;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+</body>
+</html>
+<script>
+function init(){
+	for (var i = 0; i < 4; i++) {
+		var aMian=$('<div class="mian"></div>');
+		aMian.appendTo($('.box'));
+		for (var j = 0; j < 4; j++) {
+			var aKuai=$('<div class="kuai"></div>')
+			aKuai.css({'transform':'rotateX('+i*90+'deg) translateZ(100px)','left':j*80+'px','background-image':'url(images/'+i+'.jpg)','background-position':'-'+j*80+'px 0','transition':'transform 1s '+0.1*j+'s'}).appendTo(aMian)
+		}
+	}
+};
+init();
+var n=0;
+function runPic(){
+	n++;
+	$('.mian').each(function (i) {
+		var deg=i*90-n*90;
+		$(this).find('.kuai').each(function(){
+			$(this).css({'transform':'rotateX('+deg+'deg) translateZ(100px)'});
+	
+		})
+	})
+};
+$('body').click(runPic);
+</script>

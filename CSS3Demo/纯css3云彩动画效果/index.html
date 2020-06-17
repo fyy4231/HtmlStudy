@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>纯css3云彩动画效果</title>
+<style type="text/css">
+	*{margin: 0; padding: 0; height: 100%; list-style: none;}
+	ul{
+		height: 480px; 
+		background: #007fd5; 
+		position: relative; 
+		overflow: hidden; 
+		animation: sky_bg 50s ease-out infinite; 
+		transform: translate3d(0,0,0);
+	}
+	ul li{
+		list-style: none;
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 300%;
+	}
+	.one{
+		background: url("images/cloud_one.png");
+		animation: cloud 50s linear infinite;
+		transform: translate3d(0,0,0);
+	}
+	.two{
+		background: url("images/cloud_two.png");
+		animation: cloud 75s linear infinite;
+		transform: translate3d(0, 0, 0);
+	}
+	.three{
+		background: url("images/cloud_three.png");
+		animation: cloud 100s linear infinite;
+		transform: translate3d(0, 0, 0);
+	}
+	@keyframes sky_bg{
+		0%{background: #007FD5; color: #007FD5;}
+		50%{background: #000; color: #a3d9ff;}
+		100% {background: #007fd5; color: #007fd5;}
+	}
+	@keyframes cloud {
+	  	0% {left: 0}
+	  	100% {left: -200%}
+	}
+</style>
+</head>
+<body>
+<ul>
+	<li class="one"></li>
+	<li class="two"></li>
+	<li class="three"></li>
+</ul>
+</body>
+</html>

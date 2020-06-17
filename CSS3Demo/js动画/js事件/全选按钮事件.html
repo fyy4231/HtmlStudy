@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="checkAllBtn" type="checkbox" >全选
+		<div>
+			<input type="checkbox">
+			<input type="checkbox">
+			<input type="checkbox">
+			<input type="checkbox">
+		</div>	
+		
+	</body>
+</html>
+<script>
+	var checkAll = document.getElementsByTagName('input')[0];
+	var aInput = document.getElementsByTagName('div')[0].children;
+	var num =0;
+	//点击全选按钮，其他的checkbox 的选中状态等于他的选中状态
+	checkAll.onclick = function(){
+		if(this.checked){num=4}else{num=0}
+		for(var i=0;i<aInput.length;i++){
+			aInput[i].checked = this.checked;
+		}
+	};
+	
+	//每勾选中一个input 数字加1，当数字等于aInput的长度的时候，全选按钮勾选中，如果数字不等于aInput的长度，那全选按钮不选中
+	for(var i=0;i<aInput.length;i++){
+		aInput[i].onclick = function(){
+			if( this.checked){num++}else{num--} 	///this.checked ? num++ : num--
+			if(num ==aInput.length){checkAll.checked =true}else{checkAll.checked =false}
+			
+		}
+	}
+	
+</script>
+

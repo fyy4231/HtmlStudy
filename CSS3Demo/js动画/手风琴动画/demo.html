@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='js/jquery-3.1.0.min.js'></script>
+	<script src='js/jquery.easing.min.js'></script>
+	<style>
+		.box1{width:600px;height: 200px;position: relative;left: 0;top: 0;overflow: hidden;}
+		.img1,.img2{width: 320px;height: 200px;position: absolute;left: 0;top: 0;}
+		.box2{width: 320px;height: 400px;position: relative;left: 0;top: 0;overflow: hidden;}
+		button{width: 100px;height: 30px;background: #eee;position: absolute;left: 400px;top: 300px;}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<img class="img1" src="01.jpg">
+		<img class="img1" src="02.jpg">
+		<img class="img1" src="03.jpg">
+		<img class="img1" src="04.jpg">
+		<img class="img1" src="05.jpg">
+	</div>
+	<!--<div class="box2">
+		<img class="img2" src="01.jpg">
+		<img class="img2" src="02.jpg">
+		<img class="img2" src="03.jpg">
+		<img class="img2" src="04.jpg">
+		<img class="img2" src="05.jpg">
+	</div>-->
+</body>
+</html>
+<script type="text/javascript">
+function js1(){
+	var disX=($('.box1').width()-$('img').width())/($('img').length-1);
+	$('.img1').each(function(i){
+		$(this).animate({'left':disX*i+'px'},100,'easeInOutExpo');
+	})
+	$('.img1').mouseover(function(){
+		var sIndex=$(this).index();
+		$('.img1').each(function(n){
+			var disL;
+			if (n>sIndex) {
+				disL=$('.img1').width()+disX*(n-1);
+			}else{
+				disL=disX*n;
+			};
+			$(this).stop().animate({'left':disL+'px'},1000,'easeInOutExpo')
+		})
+	})
+};
+
+/*function js2(){
+	var disY=($('.box2').height()-$('img').height())/($('img').length-1);
+	console.log(disY);
+	$('.img2').each(function(i){
+		$(this).animate({'top':i*disY+'px'},100);
+	});
+	$('.img2').mouseover(function(){
+		var sIndex=$(this).index();
+		$('.img2').each(function(n){
+			var disT;
+			if (n>sIndex) {
+				disT=$('.img2').height()+disY*(n-1);
+			} else {
+				disT=disY*n
+			};
+			$(this).stop().animate({'top':disT+'px'},1000)
+		})
+	})
+};*/
+js1();
+
+</script>

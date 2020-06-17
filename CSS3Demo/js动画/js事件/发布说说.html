@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.wrap{ width:500px;font-size:14px; margin:50px auto}
+.countTxt{ display:block; text-align:right; padding-bottom:10px;}
+.countTxt em{ font-size: 16px; font-weight: bold; font-style: normal; padding: 0 5px}
+.countTxt .red{ color: red;}
+textarea{ padding:10px; display:block; width:480px; resize:none; height:100px; border:1px solid #ccc; font-size:14px}
+.commonBtn{ height:40px; width:100px; border:1px solid #ccc; margin:10px 0 0 380px}
+hr{ margin:20px 0}
+.talkList li{ border:1px solid #ccc; padding:25px 20px 20px; border-radius:10px; position:relative; margin-bottom:20px}
+.talkList li p{min-height:50px; margin-bottom:10px; word-break:break-all}
+.talkList li .toolsBar{ text-align:right}
+.talkList li .toolsBar span{ margin-left:20px; cursor:pointer}
+.talkList li time{ position:absolute; top:10px; right:15px; color:#ccc;}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+
+$(function(){
+	function isChinese(str){  //判断是不是中文
+		var reCh=/[u00-uff]/;
+		return !reCh.test(str);
+	};
+	
+	$('textarea').keyup(function(){
+		var txtval=$(this).val();
+		
+		$('.commonBtn').prop('disabled',txtval=="" ? true:false ) ;//设定按钮
+		
+		var str_length=0; //初始定义长度为0
+		
+		for(var i=0;i<txtval.length;i++){
+			if(isChinese(txtval.charAt(i))) str_length=str_length+2;//中文为2个字符
+			else str_length=str_length+1;//英文一个字符
+		};
+		str_length=Math.ceil(str_length/2);//中英文相加除2 向下取整数（一个中文+一个英文）
+
+		var count=140-str_length;
+		if(count<0){
+			$('.countTxt').html('超出<em class="red">'+Math.abs(count)+'</em>字');
+			$('.commonBtn').prop('disabled',true);
+		}else{
+			$('.countTxt').html('您还可以输入<em>'+count+'</em>字');
+		}
+	});
+	
+	//------------------------------------------------------------------------
+	
+	$('.commonBtn').click(function(){
+		var txtVal=$('textarea').val();
+		
+		var oDate=new Date();
+		var time=oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate();
+		var html='<li><p>'+txtVal+'</p>'+
+			'<div class="toolsBar" onselectstart="return false" style="-moz-user-select:none">'+
+				'<span class="ding">顶 <b>0</b></span>'+
+				'<span class="cai">踩 <b>0</b></span>'+
+			'</div>'+
+			'<time>'+time+'</time></li>';
+		$('.talkList').prepend(html);
+		
+		//清空输入框
+		$('textarea').val("");
+		$('.countTxt').html('您还可以输入<em>140</em>字');
+		$('.commonBtn').prop('disabled',true);
+		
+	});
+	
+	//----------------------------------------------------------------
+	//事件委派 顶 踩
+	$('.talkList').on('click','.ding,.cai',function(){
+		var oEm=$(this).children('b');
+		//var num=parseInt(oEm.text());
+		//oEm.text(num+1);
+		
+		oEm.text(oEm.text()-0+1); //隐性转换类型
+		
+	});
+
+
+});
+
+
+
+
+
+/*window.onload=function(){
+	var oTextarea=document.getElementsByTagName('textarea')[0];
+	var countTxt=document.getElementsByClassName('countTxt')[0];
+	var commonBtn=document.getElementsByClassName('commonBtn')[0];
+	var talkList=document.getElementsByClassName('talkList')[0];
+	
+	function isChinese(str){  //判断是不是中文
+		var reCh=/[u00-uff]/;
+		return !reCh.test(str);
+	};
+
+	oTextarea.onkeyup=function(){
+		var txtval=this.value;
+		
+		//没有输入内容，发布按钮失效
+		commonBtn.disabled= txtval=="" ? true :false;
+		
+		var str_length=0; //初始定义长度为0
+		for(var i=0;i<txtval.length;i++){
+			if(isChinese(txtval.charAt(i))) str_length=str_length+2;//中文为2个字符
+			else str_length=str_length+1;//英文一个字符
+		};
+		str_length=Math.ceil(str_length/2);//中英文相加除2 向下取整数（一个中文+一个英文）
+
+		var count=140-str_length;
+		if(count<0){
+			countTxt.innerHTML='超出<em class="red">'+Math.abs(count)+'</em>字';
+			commonBtn.disabled=true;
+		}else{
+			countTxt.innerHTML='您还可以输入<em>'+count+'</em>字';
+		};
+	};
+	//-------------------------------------------------------------
+	commonBtn.onclick=function(){
+		var txtVal=oTextarea.value;
+		if(txtVal!=""){
+			var oDate=new Date();
+			var time=oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate();
+			
+			var newLi=document.createElement('li');
+			newLi.innerHTML='<p>'+oTextarea.value+'</p>'+
+				'<div class="toolsBar" onselectstart="return false" style="-moz-user-select:none">'+
+					'<span class="ding">顶 <b>0</b></span>'+
+					'<span class="cai">踩 <b>0</b></span>'+
+				'</div>'+
+				'<time>'+time+'</time>';
+			
+			var firstElm=talkList.firstChild;//找到第一个子元素
+			
+			//把新li插入到最前面
+			firstElm ? talkList.insertBefore(newLi,firstElm):talkList.appendChild(newLi);
+		};
+		
+		//清空输入框
+		oTextarea.value="";
+		countTxt.innerHTML='您还可以输入<em>140</em>字';
+		commonBtn.disabled=true;
+		
+	};
+	
+	//---------------------------------------------------
+	
+	//事件委派 顶 踩
+	talkList.onclick=function(ev){
+		var oEl=ev.target;
+		if(oEl==this)return;
+		var oEm=oEl.children[0];
+		
+		switch(oEl.className){
+			case "ding":
+				var num=parseInt(oEm.innerHTML);
+				oEm.innerHTML=num+1;
+			break;
+			
+			case "cai":
+			oEm.innerHTML=oEm.innerHTML-0+1; //隐性转换类型
+			break;
+		}
+	};
+	
+	
+}*/
+
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <form>
+        <span class="countTxt">您还可以输入<em>140</em>字</span>
+        <textarea></textarea>
+        <button class="commonBtn" disabled type="button">发表说说</button>
+    </form>
+    <hr>
+    <ul class="talkList">
+        <!--<li>
+            <p>adsfa asdf asdf asdf</p>
+            <div class="toolsBar">
+                <span>顶 <b>0</b></span>
+                <span>踩 <b>0</b></span>
+            </div>
+            <time></time>
+        </li>-->
+    
+    </ul>
+
+</div>
+
+
+
+</body>
+</html>

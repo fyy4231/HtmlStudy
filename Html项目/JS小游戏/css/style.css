@@ -1,0 +1,9 @@
+*{margin: 0;padding:0;}
+		.box{width: 320px;height: 480px;margin: 0 auto;position: relative;margin-top: 50px;}
+		#point{position: absolute;left: 60px;top: 12px;width: 40px;height: 20px;line-height: 20px;color: #fff;font-size: 20px;font-weight: bold;}
+		.htl{position: absolute;}
+		#bloud{position: absolute;left: 63px;top: 65px;width: 180px;height: 18px;overflow: hidden;}
+		.menustart,.menuend{width: 270px;height: 100px;font-size: 30px;font-weight: bold;color: #f60;position: absolute;margin: auto;left: 0;top: 0;right: 0;bottom: 0;text-align: center;}
+		.menustart,.menuend p{height: 50px;line-height: 50px;}
+		.menustart #btn{width: 200px;height: 50px;line-height: 50px;border-radius: 8px;background: pink;}
+		.menuend{display: none;}

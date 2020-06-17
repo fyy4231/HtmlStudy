@@ -1,0 +1,82 @@
+/*全局样式设置*/
+*{padding: 0; margin: 0;}
+body{font-family:Arial,黑体,sans-serif;}
+ul,ol{list-style: none;}
+a{text-decoration: none; color: black;}
+img,input{border: none;}
+.clearfix:after{content: "."; display: block; visibility: hidden; height: 0; clear: both; *zoom: 1;}
+/*内容样式设置  --header头部*/
+header{width: 100%; height: 90px; position: fixed; top: 0; z-index: 999;}
+header s{background: rgba(0,0,0,.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: block;}
+header .wrap{position: relative; width: 1080px; margin: 0 auto; z-index: 10;}
+header .wrap .logo{display: block; width: 241px; height: 90px; float: left; background: url(../images/logo.png) 0 2px no-repeat;}
+header .wrap .headerRt{float: right;}
+header .wrap .headerRt .link{height: 40px; line-height: 40px; color: #bcbbbb; float: right;}
+header .wrap .headerRt .link a{color: #b2b2b2;}
+header .wrap .headerSearch{background: url(../images/search.png) right top no-repeat; height: 18px; width: 186px; float: right; }
+header .wrap .headerSearch input{float: right; border: none; background: none;}
+header .wrap .headerSearch .text{width: 134px; height: 18px; line-height: 18px; padding-left: 10px; color: #c8c7c7; vertical-align: middle; float: left; text-indent: 20px;}
+header .wrap .headerSearch .submit{float: right; cursor: pointer; width: 30px; height: 18px;}
+/* -- nav导航条*/
+nav{width: 100%; height: 34px; position: fixed; left: 0; top: 90px; z-index: 999;}
+nav s{background: rgba(255,0,0,.7); width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: block;}
+nav .wrap{width: 1080px; margin: 0 auto; position: relative; z-index: 10;}
+nav .wrap .menutop li{float: left; height: 34px; line-height: 34px; width: 130px;}
+nav .wrap .menutop li a{font-size: 14px; color: #fff; display: inline-block; position: relative;}
+/* -- banner轮播区*/
+.banner{width: 100%; height: 540px; margin: 0 auto; position: relative; overflow: hidden;}
+.banner ul li{width: 1660px; position: absolute; left: 50%; top: 0; margin-left: -830px; opacity: 0;}
+.banner ul .active{opacity: 1;}
+.banner dl{position: absolute; left: 50%; bottom: 20px; z-index: 20;}
+.banner dl dd{width: 13px; height: 13px; overflow: hidden; float: left; margin-right: 10px; cursor: pointer; border-radius: 50%; background: #fff;}
+.banner dl .choose{background: #6A6A6A;}
+/* -- brandLink商标链接区*/
+.brandLink{height: 70px; padding-top: 20px; background: url(../images/banner_bottom.jpg) repeat-x;}
+.brandLink .wrap{width: 800px; height: 50px; margin: 0 auto; overflow: hidden; position: relative;}
+.brandLink .wrap ul{width: 1728px; position: absolute; left: 0; top: 0;}
+.brandLink .wrap li{float: left;}
+.brandLink .wrap li a img{width: 108px; height: 50px;}
+/* -- mine主要区域*/
+.main{height: 870px; background: url(../images/main_bg.jpg) 50% 0 no-repeat;}
+.main .wrap{width: 1080px; margin: 0 auto;}
+.main .wrap .starPro{float: left; height: 372px; padding-top: 40px; width: 640px;}
+.main .wrap .starPro .tit{height: 60px; line-height: 60px; font-size: 24px;}
+.main .wrap .starPro .product{position: relative; display: block;}
+.main .wrap .starPro .swiper-container{height: 282px; position: relative; overflow: hidden;}
+.main .wrap .starPro .swiper-container ul{height: 280px; position: relative; top: 0;}
+.main .wrap .starPro .swiper-container ul li{float: left; width: 195px; height: 195px; background: url(../images/proBg.png) no-repeat; padding: 7px 0px 2px; line-height: 40px;  font-size: 12px;}
+.main .wrap .starPro .swiper-container ul li a{display: inline-block; color: #606060; float: left; width: 100%; text-align: center;}
+.main .wrap .starPro .product .swiper-button-prev{position: absolute; left: -40px; top: 40%;  display: block;}
+.main .wrap .starPro .product .swiper-button-next{position: absolute; right: -40px; top: 40%;  display: block;}
+.main .wrap .starVideo{float: right; width: 386px; padding-top: 40px; position: relative;}
+.main .wrap .starVideo .tit{height: 60px; line-height: 60px; font-size: 24px;}
+.main .wrap .starVideo .switch{position: absolute; left: 173px; bottom: 76px;}
+.main .mainList{width: 1112px; margin: 0 auto; padding-top: 30px;}
+.main .mainList .item{width: 230px; height: 379px; padding: 0 24px; float: left; background: url(../images/listBg.png) no-repeat;}
+.main .mainList .item .tit{padding-top: 10px; height: 45px; line-height: 45px; font-size: 16px;}
+.main .mainList .item img{vertical-align: top;}
+.main .mainList .item .link a{width: 101px; height: 36px; line-height: 26px; padding-left: 10px; font-size: 14px; display: inline-block; color: #fff; background: url(../images/more.png) no-repeat;}
+.main .mainList .item .list01{line-height: 24px; padding-top: 20px; height: 90px;}
+.main .mainList .item .list01 p{font-size: 12px;}
+.main .mainList .item .list02{padding-top: 10px; height: 100px; line-height: 14px;}
+.main .mainList .item .list02 .time{font-size: 11px; color: #B2B2B2;}
+.main .mainList .item .list02 .name{height: 15px; overflow: hidden;}
+.main .mainList .item .list02 .name a{color: #606060; font-size: 12px; display: inline-block;}
+.main .mainList .item .list03{height: 95px; line-height: 24px; padding-top: 15px;}
+.main .mainList .item .list03 p{font-size: 14px;}
+.main .mainList .item .list03 ul li{list-style: disc; margin-left: 15px; font-size: 12px;}
+/* -- footer尾部*/
+footer{width: 100%; padding: 30px 0; position: relative; background: #626262; line-height: 1.8;}
+footer a{color: #B2B2B2;}
+footer .wrap{overflow: hidden; position: relative; width: 1080px; margin: auto;}
+footer .wrap .list{width: 1200px;}
+footer .wrap .list dl{float: left; width: 165px;}
+footer .wrap .list dl dt{display: block;}
+footer .wrap .list dl dd{display: block;}
+.footerInfo{width: 100%; line-height: 1.8; padding: 10px 0 20px; background: #292929;}
+.footerInfo .wrap{width: 1080px; margin: 0 auto; position: relative;}
+.footerInfo .wrap p{color: #818181; font-size: 11px;}
+.footerInfo .wrap div{position: absolute; top: 0; right: 0;}
+.footerInfo .wrap div a{color: #818181;}
+#topback{position: fixed; bottom: 80px; right: 30px; cursor: pointer;}
+#topback img{width: 51px; height: 40px; z-index: 999;}

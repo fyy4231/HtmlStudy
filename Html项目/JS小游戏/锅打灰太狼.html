@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script type="text/javascript" src="js/style.js"></script>
+</head>
+<body>
+	<div class="box">
+		<span id="point">0</span>
+		<img src="img/game_bg.jpg" alt="">
+		<div id="bloud"><img src="img/progress.png" alt=""></div>
+		<div class="menustart">
+			<p>ARE YOU READY!</p>
+			<button id="btn">GAME START!</button>
+		</div>
+		<div class="menuend">
+			<p>GAME OVER!</p>
+			<p>您获得了<span id='lpoint'></span>分！</p>
+		</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+var opoint=document.getElementById('point');
+var lpoint=document.getElementById('lpoint');
+var omenustart=document.getElementsByClassName('menustart')[0];
+var omenuend=document.getElementsByClassName('menuend')[0];
+var oBox=document.getElementsByClassName('box')[0];
+var oBloud=document.getElementById('bloud');
+var btn=document.getElementById('btn');
+var point=0;
+var arrPos = [
+		{left:"98px",top:"115px"},
+		{left:"17px",top:"160px"},
+		{left:"15px",top:"220px"},
+		{left:"30px",top:"293px"},
+		{left:"122px",top:"273px"},
+		{left:"207px",top:"295px"},
+		{left:"200px",top:"211px"},
+		{left:"187px",top:"141px"},
+		{left:"100px",top:"185px"}
+	];
+//血条减少效果
+function bloudRun(){
+	var bloud=180;
+	var i=0;
+	var startTimer=setInterval(function(){
+		bloud-=3;
+		oBloud.style.width=bloud+'px';
+		i++;
+		if (i>=60) {clearInterval(startTimer)};
+	},1000)
+}
+//灰太狼动态上升下降效果
+function jump(style,frist,last){
+	this.clicked=false;
+	//创建灰太狼图片
+	var htl=document.createElement('img');
+	oBox.appendChild(htl);
+	htl.className='htl';
+	//给灰太狼图片随机定位
+	var prob=parseInt(Math.random()*9);
+	htl.style.left=arrPos[prob].left;
+	htl.style.top=arrPos[prob].top;
+
+	var i=frist;
+	var j=last;
+	
+	//使灰太狼图片显示上升动态效果
+	var upTimer=setInterval(function(){
+		htl.src='img/'+style+''+i+'.png';
+		i++;
+		if (i>last) {
+			clearInterval(upTimer);
+			//使灰太狼图片显示下降动态效果
+			var downTimer=setInterval(function(){
+				htl.src='img/'+style+''+j+'.png';
+				j--;
+				//停止动画，删除图片
+				if (j<frist) {clearInterval(downTimer);oBox.removeChild(htl);};
+
+			},100)
+			htl.onclick=function(){
+				if (this.clicked) {return;}
+				clearInterval(upTimer);
+				clearInterval(downTimer);
+				var n=5;
+				if (style=='x') {
+					point-=10;
+					var timer=setInterval(function(){
+						n++;
+						htl.src='img/x'+n+'.png';
+						if (n>=9) {clearInterval(timer);oBox.removeChild(htl);}
+					},100)
+				}else{
+					point+=10;
+					var timer=setInterval(function(){
+						n++;
+						htl.src='img/h'+n+'.png';
+						if (n>=9) {clearInterval(timer);oBox.removeChild(htl);}
+					},100)
+				}
+				opoint.innerHTML=point;
+				this.clicked=true;
+			};
+		};
+	},100);
+};
+
+function game(){
+	var i=0;
+	var gameTimer=setInterval(function(){	
+		if (i>=60) {
+			clearInterval(gameTimer);
+			omenuend.style.display='block';
+			lpoint.innerHTML=opoint.innerHTML;
+		}else{
+			var prob=parseInt(Math.random()*11);
+			if (prob<3) {jump('x',0,5);}else{jump('h',0,5);};
+		};
+		i++;
+	},1000);
+	bloudRun();	
+}
+btn.onclick=function(){
+	omenustart.style.display='none';
+	game();
+}
+
+</script>

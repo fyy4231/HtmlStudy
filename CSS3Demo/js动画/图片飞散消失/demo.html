@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='js/jquery-3.1.0.min.js'></script>
+	<style>
+		.box{width: 960px;height: 540px;position: relative;left: 0;top: 0;background: #eee;}
+		.center{margin: auto;position: absolute;left: 0;top: 0;right: 0;bottom: 0;}
+		.smallBox{width: 48px;height: 27px;background-image: url(TachibanaKanade.jpg);position: absolute;left: 0;top: 0;transition: 2s;opacity: 1;}
+	</style>
+</head>
+<body>
+	<div class="box center"></div>
+</body>
+</html>
+<script>
+function init(){
+	for (var i = 0; i < 20; i++) {
+		for (var j = 0; j < 20; j++) {
+			var aBox=$('<div class="smallBox"></div>');
+			aBox.css({'left':i*48+'px','top':j*27+'px','background-position':'-'+i*48+'px -'+j*27+'px'}).appendTo($('.box'));
+		}
+	}
+};
+init();
+function showAll(){
+	$('.smallBox').click(function(){
+		$('.smallBox').each(function(i){
+			var m=parseInt(Math.random()*100)-50;
+			var n=parseInt(Math.random()*100)-50;
+			$(this).css({'transform':'translate('+m*5+'px,'+n*5+'px)','opacity':'0'});
+		})
+	})
+};
+showAll();
+function showPic(){
+	$('.smallBox').each(function(){
+		$(this).css({'transform':'translate(0,0)','opacity':'1'})
+	})
+}
+function initClick(){
+	var isShowAll=false;
+	$('.box').click(function(){
+		if (isShowAll) {
+			showPic();
+		}else{
+			showAll();
+		}
+		isShowAll=!isShowAll;
+	})
+};
+initClick();
+</script>
